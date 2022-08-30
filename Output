@@ -1,0 +1,57 @@
+print("[Blox Fruit]: [1/5] Authenticating...")
+
+wait(1)
+
+print("[Blox Fruit]: [2/5] Checking...")
+
+local keys = {
+    "MUXuTYWzItlV2xeN",
+    "TqKLuEMgp3CFePOZ",
+    "FreeKeyForBBaw",
+    "oJwbmt7QxPe8DN5K",
+    "8C5bkiHaWmrFVSq4",
+    "OL9wuAdKIaRsF41W",
+    "f8GFAt6jUWasewIh",
+    "jowUfYZB3DPzeSNv",
+    "UslqhkvjELYHxcRM",
+    "xJ3Tpqv7Rzlt9cFD",
+    "RrHSjbhZm9e7yLzc",
+    "fhqcVeGPRapCEmAW",
+    "xU9fpKs027XLYHrO",
+    "mbSGeL5PzAIFh792",
+    "0yrCEzOot61mfTPn",
+    "B34ST-K53Y-70R-S9UP"
+}
+
+local counter = 1
+local keyCheck
+for i,v in pairs(keys) do
+    if counter == #keys then
+    -- NoWhitelist
+    keys = "";
+    print("Ur Whitelist Is Invail")
+    else
+        if v == register_key then
+            -- whitelist
+            print("[Blox Fruit]: [3/5] Connecting to license server..")
+            wait(1)
+            print("[Blox Fruit]: [4/5] Starting Heartbeat..")
+            wait(1)
+            print("[Blox Fruit]: [5/5] Success..")
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/xNozarexd/Loader/main/Normal"))()
+            keyCheck = register_key
+            keys = "";
+        else
+            counter = counter +1
+        end
+    end
+end
+
+while true do
+    if register_key == keyCheck then
+        -- Wrong
+    else
+        game.Players.LocalPlayer:Kick("Ur Key Is Wrong")
+    end
+    wait()
+end
