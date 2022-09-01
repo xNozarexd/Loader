@@ -1,9 +1,10 @@
--- ModeNormal
 
-repeat wait() until game:IsLoaded()
+-- if server.Body ~= "BloxFruit" then
+--      repeat wait() until false
+-- end
 
 do local GUI = game.CoreGui:FindFirstChild("NestleLib");if GUI then GUI:Destroy();end;if _G.Color == nil then
-    _G.Color = Color3.fromRGB(13,239,171)
+    _G.Color = Color3.fromRGB(3,255,255)   
 end 
 end
 
@@ -131,7 +132,7 @@ function Update:Window(text,logo,keybind)
  Hub.Size = UDim2.new(0, 81, 0, 27)
  Hub.Font = Enum.Font.GothamSemibold
  Hub.Text = "Hub"
- Hub.TextColor3 = Color3.fromRGB(25, 236, 222)
+ Hub.TextColor3 = Color3.fromRGB(3,255,255)  
  Hub.TextSize = 17.000
  Hub.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -1490,7 +1491,7 @@ AutoFarm:Label("Farm Object")
 
     AutoFarm:Label("Mastery")
     
-    AutoFarm:Toggle("Auto Farm Mastery Fruit",getgenv().AutoFarmFruitMastery,function(value)
+    AutoFarm:Toggle("Auto Farm Mastery Fruit ( Not Work )",getgenv().AutoFarmFruitMastery,function(value)
         getgenv().AutoFarmFruitMastery = value
         StopTween(getgenv().AutoFarmFruitMastery)
         if getgenv().AutoFarmFruitMastery == false then
@@ -1747,7 +1748,7 @@ AutoFarm:Label("Farm Object")
         end)
     end)
     
-    AutoFarm:Toggle("Auto Farm Mastery Gun",getgenv().AutoFarmGunMastery,function(value)
+    AutoFarm:Toggle("Auto Farm Mastery Gun ( Not Work )",getgenv().AutoFarmGunMastery,function(value)
         getgenv().AutoFarmGunMastery = value
         StopTween(getgenv().AutoFarmGunMastery)
     end)
@@ -1855,7 +1856,7 @@ AutoFarm:Label("Farm Mastery Skill")
         getgenv().SkillV = value
     end)
 
-AutoFarm:Label("Status")
+AutoFarm:Label("Farm Status")
 
 _G.Melee = true
 AutoFarm:Toggle("Melee",_G.Melee,function(Value)
@@ -4142,6 +4143,29 @@ end)
 
 -- Shop
 
+Shop:Label("Shop Haki")
+
+Shop:Toggle("Auto Buy All Haki",true, function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Geppo")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Buso")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk","Buy")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Soru")
+end)
+
+Shop:Toggle("Auto Buy Bisento", false,function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Bisento")
+end)
+
+    Shop:Label("Refund & Reroll")
+    Shop:Button("Refund Stats", function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
+    end)
+    Shop:Button("Reroll Race ", function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","1")
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","2")
+    end)
+
 Shop:Label("Melee")
    Shop:Button("Black Leg",function()
 		local args = {
@@ -4208,133 +4232,65 @@ Shop:Label("Melee")
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 	end)
 Shop:Label("Sword")
-    Shop:Button("Katana [ $1,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Katana"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Cutlass [ $1,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Cutlass"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)  
-	Shop:Button("Dual Katana [ $12,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Dual Katana"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Iron Mace [ $25,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Iron Mace"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Triple Katana [ $60,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Triple Katana"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Pipe [ $100,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Pipe"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Soul Cane [ $750,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Soul Cane"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Dual-Headed Blade [ $400,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Dual-Headed Blade"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Bisento [ $1,200,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Bisento"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Pole v.2 [ 5,000 Fragments )",function()
-		game.ReplicatedStorage.Remotes.CommF_:InvokeServer("ThunderGodTalk")
-	end)
+Shop:Button("Katana", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Katana")
+end)
+Shop:Button("Cutlass", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Cutlass")
+end)
+Shop:Button("Duel Katana", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Duel Katana")
+end)
+Shop:Button("Iron Mace", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Iron Mace")
+end)
+Shop:Button("Pipe", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Pipe")
+end)
+Shop:Button("Triple Katana", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Triple Katana")
+end)
+Shop:Button("Dual-Headed Blade", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Dual-Headed Blade")
+end)
+Shop:Button("Bisento", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Bisento")
+end)
+Shop:Button("Soul Cane", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Soul Cane")
+end)
+
 Shop:Label("Gun")
-    Shop:Button("Slingshot [ $5,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Slingshot"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Musket [ $8,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Musket"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Flintlock [ $10,500 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Flintlock"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Refined Slingshot [ $30,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Refined Slingshot"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Refined Flintlock [ $65,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Refined Flintlock"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Kabucha [ 1,500 Fragments)",function()
-		game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BlackbeardReward", "Slingshot", "2")
-	end)
+
+Shop:Button("Slingshot", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Slingshot")
+end)
+Shop:Button("Musket", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Musket")
+end)
+Shop:Button("Flintlock", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Flintlock")
+end)
+Shop:Button("Refined Flintlock", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Refined Flintlock")
+end)
+Shop:Button("Cannon", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Cannon")
+end)
+Shop:Button("Kabucha", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Slingshot","1")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Slingshot","2")
+end)
 Shop:Label("Accessory")
-	Shop:Button("Black Cape [ $50,000 Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Black Cape"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Swordsman Hat [ 150k Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Swordsman Hat"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-	Shop:Button("Tomoe Ring [ $500k Beli ]",function()
-		local args = {
-			[1] = "BuyItem",
-			[2] = "Tomoe Ring"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
+Shop:Button("Black Cape", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Black Cape")
+end)
+Shop:Button("Tomeo Ring", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Tomoe Ring")
+end)
+Shop:Button("Swordsman Hat", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem","Swordsman Hat")
+end)
 Shop:Label("Race")
     Shop:Button("Race Ghoul",function()
 		local args = {
@@ -4512,7 +4468,7 @@ end)
 
 Misc:Label("Item Check")
 
-Misc:Button("Generate",function()
+Misc:Button("Generate Item",function()
 PraviteKus = "Pravite Only"
 __Config = {
       ['Inventory'] = {
@@ -4994,22 +4950,23 @@ end)
             end
         end)
 
+
 -- Normal Mode
 
 function toTarget(targetPos, targetCFrame)
 		if FastTween then
 			Distance = (targetPos - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
 			if Distance < 1000 then
-				Speed = 450
+				Speed = 325
 			elseif Distance >= 1000 then
-				Speed = 425
+				Speed = 300
 			end
 		else
 			Distance = (targetPos - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
 			if Distance < 1000 then
-				Speed = 400
+				Speed = 275
 			elseif Distance >= 1000 then
-				Speed = 375
+				Speed = 250
 			end
 		end
 		local tweenfunc = {}
@@ -5072,7 +5029,7 @@ spawn(function()
 	end)
 end)
 
-function CheckLevel()
+    function CheckLevel()
         local Lv = game:GetService("Players").LocalPlayer.Data.Level.Value
         if Old_World then
             if Lv == 1 or Lv <= 9 or SelectMonster == "Bandit [Lv. 5]" then -- Bandit
@@ -5152,27 +5109,18 @@ function CheckLevel()
                 NameMon = "Sky Bandit"
                 CFrameQ = CFrame.new(-4842.1372070313, 717.69543457031, -2623.0483398438)
                 CFrameMon = CFrame.new(-4955.6411132813, 365.46365356445, -2908.1865234375)
-            elseif Lv == 175 or Lv <= 179 or SelectMonster == "Dark Master [Lv. 175]" then -- Dark Master
-                Ms = "Dark Master [Lv. 175]"
+            elseif MyLevel == 175 or MyLevel <= 209 then
+                Mon = "Dark Master [Lv. 175]"
+                LevelQuest = 2
                 NameQuest = "SkyQuest"
-                QuestLv = 2
                 NameMon = "Dark Master"
-                CFrameQ = CFrame.new(-4842.1372070313, 717.69543457031, -2623.0483398438)
-                CFrameMon = CFrame.new(-5148.1650390625, 439.04571533203, -2332.9611816406)
-               elseif Lv == 180 or Lv <= 209 or SelectMonster == "Prisoner [Lv. 190]" then -- Prisoner
-               Ms = "Prisoner [Lv. 190]"
-               NameQuest = "PrisonerQuest"
-               QuestLv = 1
-               NameMon = "Prisoner"
-               CFrameQ = CFrame.new(5309.3584, 2.1345036, 474.173645, -0.273264647, -9.34814608e-08, -0.961938918, 3.1041214e-09, 1, -9.80620527e-08, 0.961938918, -2.97828677e-08, -0.273264647)
-               CFrameMon = CFrame.new(5393.40723, 15.6333637, 486.675385, -0.748236716, 2.00700012e-09, -0.663431823, -8.54028226e-09, 1, 1.26571456e-08, 0.663431823, 1.51364361e-08, -0.748236716)
-               elseif Lv == 210 or Lv <= 249 or SelectMonster == "Dangerous Prisoner [Lv. 210]" then -- Dangerous
-               Ms = "Dangerous Prisoner [Lv. 210]"
-               NameQuest = "PrisonerQuest"
-               QuestLv = 2
-               NameMon = "Dangerous Prisoner"
-               CFrameQ = CFrame.new(5309.3584, 2.1345036, 474.173645, -0.273264647, -9.34814608e-08, -0.961938918, 3.1041214e-09, 1, -9.80620527e-08, 0.961938918, -2.97828677e-08, -0.273264647)
-               CFrameMon = CFrame.new(5393.40723, 15.6333637, 486.675385, -0.748236716, 2.00700012e-09, -0.663431823, -8.54028226e-09, 1, 1.26571456e-08, 0.663431823, 1.51364361e-08, -0.748236716)
+                CFrameQuest = CFrame.new(-4839.53027, 716.368591, -2619.44165, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
+            elseif MyLevel == 210 or MyLevel <= 249 then
+                Mon = "Dangerous Prisoner [Lv. 210]"
+                LevelQuest = 2
+                NameQuest = "PrisonerQuest"
+                NameMon = "Dangerous Prisoner"
+                CFrameQuest = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
             elseif Lv == 250 or Lv <= 274 or SelectMonster == "Toga Warrior [Lv. 250]" then -- Toga Warrior
                 Ms = "Toga Warrior [Lv. 250]"
                 NameQuest = "ColosseumQuest"
@@ -5654,11 +5602,11 @@ function CheckLevel()
             Speed = 350
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = P1
         elseif Distance < 300 then
-            Speed = 340
-        elseif Distance < 500 then
             Speed = 290
+        elseif Distance < 500 then
+            Speed = 240
         elseif Distance >= 1000 then
-            Speed = 320
+            Speed = 270
         end
         game:GetService("TweenService"):Create(
             game.Players.LocalPlayer.Character.HumanoidRootPart,
@@ -5670,10 +5618,10 @@ function CheckLevel()
     function TP2(P1)
         Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
         if Distance < 220 then
-            Speed = 350
+            Speed = 300
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = P1
         elseif Distance >= 1000 then
-            Speed = 300
+            Speed = 250
         end
         game:GetService("TweenService"):Create(
             game.Players.LocalPlayer.Character.HumanoidRootPart,
@@ -5694,17 +5642,10 @@ function CheckLevel()
     elseif placeId == 7449423635 then
      Three_World = true
     end
-     if game.PlaceId == 2753915549 then
-         World1 = true
-     elseif game.PlaceId == 4442272183 then
-         World2 = true
-     elseif game.PlaceId == 7449423635 then
-         World3 = true
-     end
     
     function CheckQuest() 
         MyLevel = game:GetService("Players").LocalPlayer.Data.Level.Value
-        if World1 then
+        if Old_World then
             if MyLevel == 1 or MyLevel <= 9 then
                 Mon = "Bandit [Lv. 5]"
                 LevelQuest = 1
@@ -5874,7 +5815,7 @@ function CheckLevel()
                 NameMon = "Galley Captain"
                 CFrameQuest = CFrame.new(5259.81982, 37.3500175, 4050.0293, 0.087131381, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, 0.087131381)
             end
-        elseif World2 then
+        elseif New_World then
             if MyLevel == 700 or MyLevel <= 724 then
                 Mon = "Raider [Lv. 700]"
                 LevelQuest = 1
@@ -6023,7 +5964,7 @@ function CheckLevel()
                 NameMon = "Water Fighter"
                 CFrameQuest = CFrame.new(-3054.44458, 235.544281, -10142.8193, 0.990270376, -0, -0.13915664, 0, 1, -0, 0.13915664, 0, 0.990270376)
             end
-        elseif World3 then
+        elseif Three_World then
             if MyLevel == 1500 or MyLevel <= 1524 then
                 Mon = "Pirate Millionaire [Lv. 1500]"
                 LevelQuest = 1
@@ -6200,7 +6141,7 @@ function CheckLevel()
             end
         end
        end)
-
+       
        spawn(function()
         while wait(.1) do
             Type = 1
