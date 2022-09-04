@@ -1481,7 +1481,7 @@ Main2:AddToggle("Bring Mob",true,function(Mag)
         end
     end)
 
-Main2:AddToggle("Delete Effect Hit",function()
+Main2:AddToggle("Delete Effect Hit",false",function()
 		for i,v in pairs(game.Workspace:GetDescendants()) do
 			if v.Name == "DamageCounter" then   
 				v:Destroy()
